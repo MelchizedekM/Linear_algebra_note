@@ -1,4 +1,4 @@
-\documentclass{ctexart}
+\documentclass{report}
 \usepackage{xeCJK}
 \usepackage{amssymb}
 \usepackage{babel}
@@ -9,8 +9,9 @@
 \usepackage{pifont}
 \usepackage{listings}
 \usepackage{tcolorbox}
+\usepackage{blindtext}
 
-\setCJKsansfont{SimHei}
+
 
 \def\ra{\rightarrow}
 \def\rr{\Rightarrow}
@@ -45,9 +46,9 @@
 \def\sums{ \sum_{x \in \s}}
 \def\baru{\bar{\mu}}
 \def\Mbaru{\mathfrak{M}_{\baru}}
-\def\defb{\begin{tcolorbox} [colback=yellow!20, colframe=gray!100, sharp corners, leftrule={5pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
+\def\defb{\begin{tcolorbox} [colback=yellow!20, colframe=orange!80, sharp corners, leftrule={5pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
 \def\defe{\end{tcolorbox}}
-\def\egb{\begin{tcolorbox} [colback=gray!20, colframe=gray!100, sharp corners, leftrule={5pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
+\def\egb{\begin{tcolorbox} [colback=blue!20, colframe=blue!80, sharp corners, leftrule={5pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
 \def\ege{\end{tcolorbox}}
 \def\V{\mathcal{V}}
 \def\U{\mathcal{U}}
@@ -56,7 +57,8 @@
 \def\w{\mathbf{w}}
 
 
-\title{Linear Algebra notes}
+\title{线性代数笔记}
+
 \author{M.}
 \date{\today}
 
@@ -65,9 +67,14 @@
 \maketitle
 
 \newpage
-\subsection*{Chapter 1 Vector, Vector space, and Linear}
+
+\tableofcontents
+
+\chapter{Vector, Vector space, and Linear}
 
 欢迎来到我们线性代数课程的第一章,本章我们会从之前所学的对向量的朴素认知出发发展出什么是vector space，进而延伸到对linear的思考和定义。
+
+\section{Vector and Vector space}
 
 在我们高中的学习过程中,我们已经接触到了一种特殊的量——向量（或矢量）。在过去的学习中我们认为这种量不只有数值大小,还有方向。我们一般会将他们写成(a,b,c)的形式。例如(6,1,2)就代表着一个在x方向延伸六个单位长度,在y方向延伸一个单位长度,在z方向延伸了两个单位长度的向量。但是这种表述方式并不够规范,我们也不好表示一组有着某些抽象关系的向量,例如所有从原点发出的向量。毕竟像 $ \{(x,y,z):x\in  \mathbb{R},y\in \mathbb{R},z \in \mathbb{R} \} $ 的表达并不算简单,在我们引入更多坐标轴变量的时候也会更费墨水,因此我们想要引入一些特殊的符号来更加方便的表述这样的list（有序列）。
 
