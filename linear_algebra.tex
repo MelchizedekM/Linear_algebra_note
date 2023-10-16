@@ -55,6 +55,7 @@
 \def\v{\mathbf{v}}
 \def\u{\mathbf{u}}
 \def\w{\mathbf{w}}
+\def\span{\text{span}}
 
 
 \title{线性代数笔记}
@@ -139,7 +140,16 @@
 
 同时定义所有属于 $ \mathcal{V} $ 这个vector space的元素都是 \textbf{vector}。
 \defe
-在这个定义中，我们默认了数乘，也就是 $ \forall a \in \R \b \forall \v \in \V \b a\v \in \V $，的存在性。这也是我们讨论线性代数的基础之一。
+
+在这个定义中，我们默认了数乘，也就是 $ \forall a \in \R \b \forall \v \in \V \b a\v \in \V $，的存在性。这也指出当我们说一个集合$\V$是一个vector space之前，我们必须先定义这个集合中元素的数乘。
+
+\egb
+例如：
+
+$\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ 我们定义 $ a\v = (av_1,av_2,\dots,av_n) $为$\R$中的数乘。
+
+这和我们在高中阶段所学的向量的数乘也是一致的。
+\ege
 
 我们可以很简单的验证 $ \mathbb{R}^n $ 是一个vector space。
 
@@ -154,7 +164,7 @@
 
 \section{Linear Combination and Span}
 
-在上一个小节，我们介绍了什么是vector space。而在这一章节中，我们将会从一个重要的概念——linear出发，探讨我们该如何构建一个vector space以及vector的一些重要形式。
+在上一个小节，我们介绍了什么是vector space。而在这一章节中，我们将会从一个重要的概念——linear出发，探讨我们该如何构建一个vector space以及vector的一些重要定义。
 
 当我们提及linear也就线性的时候，我们第一时间想到的一定会是线性函数（linear function），也就是我们从初中开始接触到的一次函数。根据对线性函数的直观印象，我们可以简单地认为，线性本质上就是对不同的元素进行加法和数乘的运算。而我们在上一章节中已经定义了vector space，也就是说，我们可以将线性函数初中学习的最基础的多元一次函数拓展到vector space上，看作是对vector space中的元素进行加法和数乘的运算。而我们将这种对vector space中的多个元素进行加法和数乘的运算称为\textbf{linear combination}。
 
@@ -165,5 +175,30 @@
 	如果$ \u \in \V$ 是由通过关系式 $\u = a_1\v_1+a_2\v_2+…+a_n\v_n $ 获得的，那么我们说$\u$可以被$ \v_1,\v_2,…,\v_n $ 的\textbf{linear combination}表示。
 	
 \defe
+
+\egb
+	例如：
+
+	我们可以说 $ (6,1,2) $ 可以被 $ (1,0,0),(0,1,0),(0,0,1) $ 的linear combination表示，因为 $ (6,1,2) = 1(1,0,0)+1(0,1,0)+2(0,0,1) $。
+\ege
+
+如果我们将vector space的定义视作构建大楼的图纸，将vector是为构建大楼的砖块。那么linear combination就可以被视为搭建蓝图中大厦所必要的工具（这里我们必须指出，虽然我们在定义什么是vector的时候使用了vector space。但是事实上这并不是必须的，甚至在许多情况下，我们是通过对一组我们感兴趣的元素的线性叠加来构建出我们所希望研究的vector space的。值得指出的是，这种循环看起来会产生形式上的问题。但在形式上我们依旧可以说“我们通过某一组‘元素’构建起了一个集合，而这个集合经过验证‘居然神奇的’是一个vector space。而我们最初用来构建这一vector space的元素‘居然’也是这个vector space中的元素”这样的过程来避免形式上的问题。我们在之后不会再注意使用这种冗长的避免方式，而是直接将构建的元素称为vector）。因此，我们引入一个重要的定义——\textbf{span}，来严格表示使用一组vector来生成一个vector space的过程。
+
+\defb
+	\textbf{Definition 1.7}
+	我们称一个集合$\U$是由一组vector $\v_1,\v_2,\dots,\v_n \in \V$ \textbf{“span”}的当且仅当集合$\U$中的所有元素恰好是$\v_1,\v_2,\dots,\v_n$的全部linear combination。我们将这样的$\U$记做$\span(\v_1,\v_2,\dots,\v_n)$。
+
+	用一种更加数学的表示方法，我们可以将$\span(\v_1,\v_2,\dots,\v_n)$表示为：
+
+	$$ \span(\v_1,\v_2,\dots,\v_n) = \left\{ \sum_{i=1}^{n} a_k \v_k : \forall a_k \in \R \right\} $$
+\defe
+
+\egb
+例如：
+
+$(6,0,0)$和$(0,12,0)$的span，即$\span((6,0,0),(0,12,0))$
+
+\ege 
+
 
 \end{document}
