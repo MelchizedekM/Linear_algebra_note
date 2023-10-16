@@ -152,4 +152,18 @@
 自然的，我们会思考，像P(n)和$\mathbb{R}^n$的这些vector space之间会不会有一种内在联系呢？
 显然我们会发现任意一个 $ \sum_{i=0}^n p_i t^i $ 的多项式都可以被 $ (p_1,p_2,…,p_n) $ 唯一确定的表示，我们将这种关系称为\textbf{isomorphism}。对于这一关系的定义完善我们先按下不表，继续我们对于Vector space本身的探讨。
 
+\section{Linear Combination and Span}
+
+在上一个小节，我们介绍了什么是vector space。而在这一章节中，我们将会从一个重要的概念——linear出发，探讨我们该如何构建一个vector space以及vector的一些重要形式。
+
+当我们提及linear也就线性的时候，我们第一时间想到的一定会是线性函数（linear function），也就是我们从初中开始接触到的一次函数。根据对线性函数的直观印象，我们可以简单地认为，线性本质上就是对不同的元素进行加法和数乘的运算。而我们在上一章节中已经定义了vector space，也就是说，我们可以将线性函数初中学习的最基础的多元一次函数拓展到vector space上，看作是对vector space中的元素进行加法和数乘的运算。而我们将这种对vector space中的多个元素进行加法和数乘的运算称为\textbf{linear combination}。
+
+\defb
+	\textbf{Definition 1.6}
+	$\forall \v_1,\v_2,…,\v_k \in \V \b \forall a_1,a_2,…,a_k \in \R $ 我们称形如$ \sum_{i=1}^{k} a_k \v_k $的表达式为$\v_1, \v_2 , \dots , \v_k$的一个\textbf{linear combination}。
+	
+	如果$ \u \in \V$ 是由通过关系式 $\u = a_1\v_1+a_2\v_2+…+a_n\v_n $ 获得的，那么我们说$\u$可以被$ \v_1,\v_2,…,\v_n $ 的\textbf{linear combination}表示。
+	
+\defe
+
 \end{document}
