@@ -18,19 +18,19 @@
 例如
  $$ \mathbb{R}^4≔\{(x_1,x_2,x_3,x_4):\forall i\in \mathbb{Z} \,\, x_i\in  \mathbb{R} \} $$ 
 
-现在我们非常神奇地发现，我们之前所学过的所谓vector都是属于\mathbb{R}^2或\mathbb{R}^3的list。回忆我们曾经学过的向量的加法，比如(6,1,2)+(12,1,9)=(6+12,1+1,9+9)加法的方式就是简单的将不同coordinate上的元素分别相加。
+现在我们非常神奇地发现，我们之前所学过的所谓vector都是属于 $\mathbb{R}^2$ 或 $\mathbb{R}^3$ 的list。回忆我们曾经学过的向量的加法，比如(6,1,2)+(12,1,9)=(6+12,1+1,9+9)加法的方式就是简单的将不同coordinate上的元素分别相加。
 
-那么类比的，我们就可以定义任意n下\mathbb{R}^n中元素的加法：
- $$ \forall x,y\in \mathbb{R}^n,x+y∶=z where z_i=x_i+y_i  \forall i $$ 
+那么类比的，我们就可以定义任意n下 $\mathbb{R}^n$ 中元素的加法：
+ $$ \forall x,y\in \mathbb{R}^n,x+y∶=z \,\,\, \text{where} \,\,\, z_i=x_i+y_i  \forall i $$ 
 我们可以显然的发现，这里的加法是符合交换律的，在这里我们就不做证明，留待读者自证。
-再根据我们对零的一半感知，也就是所有数加0都是它本身，我们可以定义在 $ \mathbb{R}^n $ 中的0:
- $ \forall x\in \mathbb{R}^n \,\,\,  x+0=x $ 
+再根据我们对零的一般感知，也就是所有数加0都是它本身，我们可以定义在 $\mathbb{R}^n$ 中的0:
+ $$ \forall x\in \mathbb{R}^n \,\,\,  x+0=x $$ 
 我们可以显然的发现在所有 $\mathbb{R}^n$ 中0都是唯一的并且0=(0,0,0,…,0)
 
 当然，我们的数学家不愿意止步于此。我们希望将我们熟悉的欧几里得空间也就是 $\mathbb{R}^n$ 中的朴素认知拓展推广到更加抽象的一般集合中。再根据我们对vector也就是向量的朴素认知将其推广到一般集合中的一般元素。我们便有了更加抽象和一般化的对vector space和vector的定义：
 
 我们说一个集合 $ \mathcal{V} $ 是vector space当且仅当它满足以下所有性质：
-	1. Commutativity：  $ \forall  u,v\in \mathcal{V} \,\, u+v=v+u $ 
+	1. Commutativity：  $\forall  u,v\in \mathcal{V} \,\, u+v=v+u$ 
 	2. Associativity： $ \forall  u,v,w \in \mathcal{V} \,\, u+(v+w)=(v+u)+w \,\,\, \text{and} \,\,\, \forall  a,b\in \mathbb{R} \,\, a(bv)=(ab)v $ 
 	3. Additive identity： $ \exists 0\in \mathcal{V} \,\, \forall  v\in \mathcal{V} \,\, v+0=v $ 
 	4. Additive inverse： $ \forall  v\in \mathcal{V} \,\, \exists  u\in \mathcal{V} \,\, v+u=0 $ 
