@@ -56,6 +56,8 @@
 \def\u{\mathbf{u}}
 \def\w{\mathbf{w}}
 \def\span{\text{span}}
+\def\<{\left\langle}
+\def\>{\right\rangle}
 
 
 \title{线性代数笔记}
@@ -311,12 +313,45 @@ $。
 		\vdots \\
 		a_{m1}x_1 + a_{m2}x_2 + \dots + a_{mn}x_n
 	\end{matrix}\right]
-	:= \mathbf{b}
+	=: \mathbf{b}
 	$$
-	。\\
+	\\
 
-	我们不难发现，其中$ \mathbf{b} $是一个length为$ m $的vector，它的第i个元素$ b_{i} $为A的第$i$行和x的第$j$列的“点乘”（对于这一高中知识我们将会在后面进行更加全面和数学化的介绍，其名称为 \textbf{inner product}。不同于高中$\v \cdot \u $的记法，我们一般会将这种运算写为$<\v,\u>$。在此后如果我们继续提及点乘，我们可能会将两种写法混用）。
+	我们不难发现，其中$ \mathbf{b} $是一个length为$ m $的vector，它的第i个元素$ b_{i} $为A的第$i$行和x的第$j$列的“点乘”（对于这一高中知识我们将会在后面进行更加全面和数学化的介绍，其名称为 \textbf{inner product}。不同于高中$\v \cdot \u $的记法，我们一般会将这种运算写为$\< \v , \u \> $。在此后如果我们继续提及点乘，我们可能会将两种写法混用）。
 
 \defe
+
+那么进一步的，我们是否可以同时计算多个用同一个coefficient matrix表示的线性方程组呢？答案是肯定的。我们只需要将多个vector按照一定的顺序排列在一起，形成一个matrix，然后将这个matrix和coefficient matrix进行matrix-vector multiplication即可。这样，我们就引入了一个新的概念——\textbf{matrix multiplication}。
+
+\defb 
+	\textbf{Definition 1.10}
+	我们定义一个$ m \times n $ 的matrix \textbf{A}和一个$ n \times k $的matrix \textbf{B}的\textbf{matrix multiplication}，$ \mathbf{AB} $， 为
+	$$ \mathbf{AB} =
+	 \left[ \begin{matrix}
+		a_{11} & a_{12} & \dots & a_{1n} \\
+		a_{21} & a_{22} & \dots & a_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{m1} & a_{m2} & \dots & a_{mn}
+	\end{matrix}\right]
+	\left[ \begin{matrix}
+		b_{11} & b_{12} & \dots & b_{1k} \\
+		b_{21} & b_{22} & \dots & b_{2k} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		b_{n1} & b_{n2} & \dots & b_{nk}
+	\end{matrix}\right]$$
+	$$=
+	\left[ \begin{matrix}
+		a_{11}b_{11} + a_{12}b_{21} + \dots + a_{1n}b_{n1} & \dots & a_{11}b_{1k} + a_{12}b_{2k} + \dots + a_{1n}b_{nk} \\
+		a_{21}b_{11} + a_{22}b_{21} + \dots + a_{2n}b_{n1} & \dots & a_{21}b_{1k} + a_{22}b_{2k} + \dots + a_{2n}b_{nk} \\
+		\vdots  & \ddots & \vdots \\
+		a_{m1}b_{11} + a_{m2}b_{21} + \dots + a_{mn}b_{n1} & \dots & a_{m1}b_{1k} + a_{m2}b_{2k} + \dots + a_{mn}b_{nk}
+	\end{matrix}\right]
+	=: \mathbf{C}
+	$$
+	\\
+
+	我们不难发现，其中$ \mathbf{C} $是一个$ m \times k $的matrix，它的第$i$行和第$j$列的entry为A的第$i$行和B的第$j$列的“点乘”。
+
+\defe 
 
 \end{document}
