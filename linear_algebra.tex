@@ -10,7 +10,8 @@
 \usepackage{listings}
 \usepackage{tcolorbox}
 \usepackage{blindtext}
-
+\usepackage{xcolor}
+\usepackage{color}
 
 
 \def\ra{\rightarrow}
@@ -46,9 +47,9 @@
 \def\sums{ \sum_{x \in \s}}
 \def\baru{\bar{\mu}}
 \def\Mbaru{\mathfrak{M}_{\baru}}
-\def\defb{\begin{tcolorbox} [colback=yellow!20, colframe=orange!80, sharp corners, leftrule={5pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
+\def\defb{\begin{tcolorbox} [colback=orange!20, colframe=orange!60, sharp corners, leftrule={3pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
 \def\defe{\end{tcolorbox}}
-\def\egb{\begin{tcolorbox} [colback=blue!20, colframe=blue!80, sharp corners, leftrule={5pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
+\def\egb{\begin{tcolorbox} [colback=cyan!20, colframe=cyan!40, sharp corners, leftrule={5pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
 \def\ege{\end{tcolorbox}}
 \def\V{\mathcal{V}}
 \def\U{\mathcal{U}}
@@ -58,6 +59,8 @@
 \def\span{\text{span}}
 \def\<{\left\langle}
 \def\>{\right\rangle}
+
+
 
 
 \title{线性代数笔记}
@@ -75,22 +78,22 @@
 
 \chapter{Vector, Vector space, and Linear}
 
-欢迎来到我们线性代数课程的第一章,本章我们会从之前所学的对向量的朴素认知出发发展出什么是vector space，进而延伸到对linear的思考和定义。
+欢迎来到线性代数课程的第一章,本章会从之前所学的对向量的朴素认知出发发展出什么是vector space，进而延伸到对linear的思考和定义。
 
 \section{Vector and Vector space}
 
-在我们高中的学习过程中,我们已经接触到了一种特殊的量——向量（或矢量）。在过去的学习中我们认为这种量不只有数值大小,还有方向。我们一般会将他们写成(a,b,c)的形式。例如(6,1,2)就代表着一个在x方向延伸六个单位长度,在y方向延伸一个单位长度,在z方向延伸了两个单位长度的向量。但是这种表述方式并不够规范,我们也不好表示一组有着某些抽象关系的向量,例如所有从原点发出的向量。毕竟像 $ \{(x,y,z):x\in  \mathbb{R},y\in \mathbb{R},z \in \mathbb{R} \} $ 的表达并不算简单,在我们引入更多坐标轴变量的时候也会更费墨水,因此我们想要引入一些特殊的符号来更加方便的表述这样的list（有序列）。
+在高中的学习过程中,已经接触到了一种特殊的量——向量（或矢量）。在过去的学习中认为这种量不只有数值大小,还有方向。一般会将他们写成(a,b,c)的形式。例如(6,1,2)就代表着一个在x方向延伸六个单位长度,在y方向延伸一个单位长度,在z方向延伸了两个单位长度的向量。但是这种表述方式并不够规范,也不好表示一组有着某些抽象关系的向量,例如所有从原点发出的向量。毕竟像 $ \{(x,y,z):x\in  \mathbb{R},y\in \mathbb{R},z \in \mathbb{R} \} $ 的表达并不算简单,在引入更多坐标轴变量的时候也会更费墨水,因此想要引入一些特殊的符号来更加方便的表述这样的list（有序列）。
 
-我们首先严谨的定义一下什么是list和list的length。
+首先严谨的定义一下什么是list和list的length。
 \defb
 	\textbf{Definition 1.1}
-	我们说n个数构成了一个length为n的list当且仅当这n个数以一种有序的方式排列在一起组合成一个元素。
-	我们一般将这种有序列写作 $ (x_1,x_2,x_3,…,x_n) $ 。
+	定义n个数构成了一个length为n的list当且仅当这n个数以一种有序的方式排列在一起组合成一个元素。
+	一般将这种有序列写作 $ (x_1,x_2,x_3,…,x_n) $ 。
 \defe
 
 
-在此基础上,我们便可以定义在任意n下所有长度为n的list的集合了
-我们定义 $ \mathbb{R}^n $ 为所有长度为n的list的集合,即
+在此基础上,便可以定义在任意n下所有长度为n的list的集合了
+定义 $ \mathbb{R}^n $ 为所有长度为n的list的集合,即
 
 \defb 
 	\textbf{Definition 1.2}	
@@ -103,30 +106,30 @@
  $$ \mathbb{R}^4 := \{(x_1,x_2,x_3,x_4):\forall i\in \mathbb{Z} \,\, x_i\in  \mathbb{R} \} $$ 
 \ege
 
-现在我们非常神奇地发现,我们之前所学过的所谓vector都是属于 $\mathbb{R}^2$ 或 $\mathbb{R}^3$ 的list。回忆我们曾经学过的向量的加法,比如(6,1,2)+(12,1,9)=(6+12,1+1,9+9)加法的方式就是简单的将不同coordinate上的元素分别相加。
+现在非常神奇地发现,之前所学过的所谓vector都是属于 $\mathbb{R}^2$ 或 $\mathbb{R}^3$ 的list。回忆曾经学过的向量的加法,比如(6,1,2)+(12,1,9)=(6+12,1+1,9+9)加法的方式就是简单的将不同coordinate上的元素分别相加。
 
-那么类比的,我们就可以定义任意n下 $\mathbb{R}^n$ 中元素的加法:
+那么类比的,就可以定义任意n下 $\mathbb{R}^n$ 中元素的加法:
 
 \defb
 	\textbf{Definition 1.3}
-	在 $\mathbb{R}^n$ 中符号“+”可以由以下公式定义，我们将这种运算称为\textbf{加法}:	
+	在 $\mathbb{R}^n$ 中符号“+”可以由以下公式定义，将这种运算称为\textbf{加法}:	
  $$ \forall x,y\in \mathbb{R}^n,x+y∶=z \,\,\, \text{where} \,\,\, z_i=x_i+y_i  \forall i $$ 
 \defe
 
-我们可以显然的发现,这里的加法是符合交换律的,在这里我们就不做证明,留待读者自证。而根据我们对零的一般感知,也就是所有数加0都是它本身,我们可以定义在 $\mathbb{R}^n$ 中的0:
+可以显然的发现,这里的加法是符合交换律的,在这里就不做证明,留待读者自证。而根据对零的一般感知,也就是所有数加0都是它本身,可以定义在 $\mathbb{R}^n$ 中的0:
 
 \defb
 	\textbf{Definition 1.4}
-	我们定义 $\mathbb{R}^n$ 中的\textbf{0}为:
+	定义 $\mathbb{R}^n$ 中的\textbf{0}为:
  $$ \forall x\in \mathbb{R}^n \,\,\,  x+0=x $$ 
 \defe
-我们可以显然的发现在所有 $\mathbb{R}^n$ 中\textbf{0都是唯一的并且0=(0,0,0,…,0)}.
+可以显然的发现在所有 $\mathbb{R}^n$ 中\textbf{0都是唯一的并且0=(0,0,0,…,0)}.
 
-当然,我们的数学家不愿意止步于此。我们希望将我们熟悉的欧几里得空间也就是 $\mathbb{R}^n$ 中的朴素认知拓展推广到更加抽象的一般集合中。再根据我们对vector也就是向量的朴素认知将其推广到一般集合中的一般元素。我们便有了更加抽象和一般化的对vector space和vector的定义:
+当然,数学家不愿意止步于此。希望将熟悉的欧几里得空间也就是 $\mathbb{R}^n$ 中的朴素认知拓展推广到更加抽象的一般集合中。再根据对vector也就是向量的朴素认知将其推广到一般集合中的一般元素。便有了更加抽象和一般化的对vector space和vector的定义:
 
 \defb
 	\textbf{Definition 1.5}
-我们说一个集合 $ \mathcal{V} $ 是一个\textbf{vector space}当且仅当它满足以下所有性质:
+定义一个集合 $ \mathcal{V} $ 是一个\textbf{vector space}当且仅当它满足以下所有性质:
 
 	1. Commutativity:  $\forall  \u,\v\in \mathcal{V} \,\, \u+\v=\v+\u$ 
 
@@ -143,54 +146,54 @@
 同时定义所有属于 $ \mathcal{V} $ 这个vector space的元素都是 \textbf{vector}。
 \defe
 
-在这个定义中，我们默认了数乘，也就是 $ \forall a \in \R \b \forall \v \in \V \b a\v \in \V $，的存在性。这也指出当我们说一个集合$\V$是一个vector space之前，我们必须先定义这个集合中元素的数乘。
+在这个定义中，默认了数乘，也就是 $ \forall a \in \R \b \forall \v \in \V \b a\v \in \V $，的存在性。这也指出当说一个集合$\V$是一个vector space之前，必须先定义这个集合中元素的数乘。
 
 \egb
 例如：
 
-$\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ 我们定义 $ a\v = (av_1,av_2,\dots,av_n) $为$\R$中的数乘。
+$\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ 定义 $ a\v = (av_1,av_2,\dots,av_n) $为$\R$中的数乘。
 
-这和我们在高中阶段所学的向量的数乘也是一致的。
+这和在高中阶段所学的向量的数乘也是一致的。
 \ege
 
-我们可以很简单的验证 $ \mathbb{R}^n $ 是一个vector space。
+可以很简单的验证 $ \mathbb{R}^n $ 是一个vector space。
 
 \egb
-而我们也可以举出一些更加奇怪的vector space的例子:
+而也可以举出一些更加奇怪的vector space的例子:
 
-如果我们定义 $ P(n) ∶=\{ \sum_{i=0}^n p_i t^i :\forall p_i\in \mathbb{R}\} $  那么我们可以发现P(n)也是一个vector space。
+如果定义 $ P(n) ∶=\{ \sum_{i=0}^n p_i t^i :\forall p_i\in \mathbb{R}\} $  那么可以发现P(n)也是一个vector space。
 \ege 
 
-自然的，我们会思考，像P(n)和$\mathbb{R}^n$的这些vector space之间会不会有一种内在联系呢？
-显然我们会发现任意一个 $ \sum_{i=0}^n p_i t^i $ 的多项式都可以被 $ (p_1,p_2,…,p_n) $ 唯一确定的表示，我们将这种关系称为\textbf{isomorphism}。对于这一关系的定义完善我们先按下不表，继续我们对于Vector space本身的探讨。
+自然的，会思考，像P(n)和$\mathbb{R}^n$的这些vector space之间会不会有一种内在联系呢？
+显然会发现任意一个 $ \sum_{i=0}^n p_i t^i $ 的多项式都可以被 $ (p_1,p_2,…,p_n) $ 唯一确定的表示，将这种关系称为\textbf{isomorphism}。对于这一关系的定义完善先按下不表，继续对于Vector space本身的探讨。
 
 \section{Linear Combination and Span}
 
-在上一个小节，我们介绍了什么是vector space。而在这一章节中，我们将会从一个重要的概念——linear出发，探讨我们该如何构建一个vector space以及vector的一些重要定义。
+在上一个小节，介绍了什么是vector space。而在这一章节中，将会从一个重要的概念——linear出发，探讨该如何构建一个vector space以及vector的一些重要定义。
 
-当我们提及linear也就线性的时候，我们第一时间想到的一定会是线性函数（linear function），也就是我们从初中开始接触到的一次函数。根据对线性函数的直观印象，我们可以简单地认为，线性本质上就是对不同的元素进行加法和数乘的运算。而我们在上一章节中已经定义了vector space，也就是说，我们可以将线性函数初中学习的最基础的多元一次函数拓展到vector space上，看作是对vector space中的元素进行加法和数乘的运算。而我们将这种对vector space中的多个元素进行加法和数乘的运算称为\textbf{linear combination}。
+当提及linear也就线性的时候，第一时间想到的一定会是线性函数（linear function），也就是从初中开始接触到的一次函数。根据对线性函数的直观印象，可以简单地认为，线性本质上就是对不同的元素进行加法和数乘的运算。而在上一章节中已经定义了vector space，也就是说，可以将线性函数初中学习的最基础的多元一次函数拓展到vector space上，看作是对vector space中的元素进行加法和数乘的运算。而将这种对vector space中的多个元素进行加法和数乘的运算称为\textbf{linear combination}。
 
 \defb
 	\textbf{Definition 1.6}
-	$\forall \v_1,\v_2,…,\v_k \in \V \b \forall a_1,a_2,…,a_k \in \R $ 我们称形如$ \sum_{i=1}^{k} a_k \v_k $的表达式为$\v_1, \v_2 , \dots , \v_k$的一个\textbf{linear combination}。
+	$\forall \v_1,\v_2,…,\v_k \in \V \b \forall a_1,a_2,…,a_k \in \R $ 称形如$ \sum_{i=1}^{k} a_k \v_k $的表达式为$\v_1, \v_2 , \dots , \v_k$的一个\textbf{linear combination}。
 	
-	如果$ \u \in \V$ 是由通过关系式 $\u = a_1\v_1+a_2\v_2+…+a_n\v_n $ 获得的，那么我们说$\u$可以被$ \v_1,\v_2,…,\v_n $ 的\textbf{linear combination}表示。
+	如果$ \u \in \V$ 是由通过关系式 $\u = a_1\v_1+a_2\v_2+…+a_n\v_n $ 获得的，那么说$\u$可以被$ \v_1,\v_2,…,\v_n $ 的\textbf{linear combination}表示。
 	
 \defe
 
 \egb
 	例如：
 
-	我们可以说 $ (6,1,2) $ 可以被 $ (1,0,0),(0,1,0),(0,0,1) $ 的linear combination表示，因为 $ (6,1,2) = 1(1,0,0)+1(0,1,0)+2(0,0,1) $。
+	可以说 $ (6,1,2) $ 可以被 $ (1,0,0),(0,1,0),(0,0,1) $ 的linear combination表示，因为 $ (6,1,2) = 1(1,0,0)+1(0,1,0)+2(0,0,1) $。
 \ege
 
-如果我们将vector space的定义视作构建大楼的图纸，将vector是为构建大楼的砖块。那么linear combination就可以被视为搭建蓝图中大厦所必要的工具（这里我们必须指出，虽然我们在定义什么是vector的时候使用了vector space。但是事实上这并不是必须的，甚至在许多情况下，我们是通过对一组我们感兴趣的元素的线性叠加来构建出我们所希望研究的vector space的。值得指出的是，这种循环看起来会产生形式上的问题。但在形式上我们依旧可以说“我们通过某一组‘元素’构建起了一个集合，而这个集合经过验证‘居然神奇的’是一个vector space。而我们最初用来构建这一vector space的元素‘居然’也是这个vector space中的元素”这样的过程来避免形式上的问题。我们在之后不会再注意使用这种冗长的避免方式，而是直接将构建的元素称为vector）。因此，我们引入一个重要的定义——\textbf{span}，来严格表示使用一组vector来生成一个vector space的过程。
+如果将vector space的定义视作构建大楼的图纸，将vector是为构建大楼的砖块。那么linear combination就可以被视为搭建蓝图中大厦所必要的工具（这里必须指出，虽然在定义什么是vector的时候使用了vector space。但是事实上这并不是必须的，甚至在许多情况下，是通过对一组感兴趣的元素的线性叠加来构建出所希望研究的vector space的。值得指出的是，这种循环看起来会产生形式上的问题。但在形式上依旧可以说“通过某一组‘元素’构建起了一个集合，而这个集合经过验证‘居然神奇的’是一个vector space。而最初用来构建这一vector space的元素‘居然’也是这个vector space中的元素”这样的过程来避免形式上的问题。在之后不会再注意使用这种冗长的避免方式，而是直接将构建的元素称为vector）。因此，引入一个重要的定义——\textbf{span}，来严格表示使用一组vector来生成一个vector space的过程。
 
 \defb
 	\textbf{Definition 1.7}
-	我们称一个集合$\U$是由一组vector $\v_1,\v_2,\dots,\v_n \in \V$ \textbf{“span”}的当且仅当集合$\U$中的所有元素恰好是$\v_1,\v_2,\dots,\v_n$的全部linear combination。我们将这样的$\U$记做$\span(\v_1,\v_2,\dots,\v_n)$。
+	定义一个集合$\U$是由一组vector $\v_1,\v_2,\dots,\v_n \in \V$ \textbf{“span”}的当且仅当集合$\U$中的所有元素恰好是$\v_1,\v_2,\dots,\v_n$的全部linear combination。将这样的$\U$记做$\span(\v_1,\v_2,\dots,\v_n)$。
 
-	用一种更加数学的表示方法，我们可以将$\span(\v_1,\v_2,\dots,\v_n)$表示为：
+	用一种更加数学的表示方法，可以将$\span(\v_1,\v_2,\dots,\v_n)$表示为：
 
 	$$ \span(\v_1,\v_2,\dots,\v_n) = \left\{ \sum_{i=1}^{n} a_k \v_k : \forall a_k \in \R \right\} $$
 \defe
@@ -209,7 +212,7 @@ $\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ �
 
 \ege 
 
-更进一步，我们观察例子中$\span$的线性组合。我们可以发现，这种线性组合可以被表示为一组多元一次方程组的形式。我们可以将任意的$\v \in \span((6,0,0),(0,12,0),(0,0,1))$表示为:
+更进一步，观察例子中$\span$的线性组合。可以发现，这种线性组合可以被表示为一组多元一次方程组的形式。可以将任意的$\v \in \span((6,0,0),(0,12,0),(0,0,1))$表示为:
 
 $$\begin{cases}
 	6x_1 + 0x_2 + 0x_3 &= v_1 \\
@@ -217,7 +220,7 @@ $$\begin{cases}
 	0x_1 + 0x_2 + 1x_3 &= v_3
 \end{cases}$$
 
-让我们在进一步观察这个线性方程组的形式，我们可以发现如果我们放弃将vector写成横向，而是以竖向表示，那么
+让在进一步观察这个线性方程组的形式，可以发现如果放弃将vector写成横向，而是以竖向表示，那么
 $ \left[\begin{matrix}
 	v_1 \\
 	v_2 \\
@@ -231,28 +234,28 @@ $ \left[\begin{matrix}
 \end{matrix} \right]$ 
 。
 
-我们可以发现，$x_1,x_2,x_3$的出现是存在规律的，在每一行上第一个出现的都是$x_1$第二个都是$x_2$...以此类推。而且不难验证，这种关系对于任意的$n$都是普遍存在的。作为懒惰且不想多费墨水的我们，自然会想要寻找一种更加简单的方式来反应这样的组合。由于$x_i$的出现位置是一定的，因而只有每个$x_i$前面的系数是重要的。我们需要做的只是将这些系数按照一定的顺序保存下来，而这种保存的方式就是\textbf{matrix}。
+可以发现，$x_1,x_2,x_3$的出现是存在规律的，在每一行上第一个出现的都是$x_1$第二个都是$x_2$...以此类推。而且不难验证，这种关系对于任意的$n$都是普遍存在的。作为懒惰且不想多费墨水的，自然会想要寻找一种更加简单的方式来反应这样的组合。由于$x_i$的出现位置是一定的，因而只有每个$x_i$前面的系数是重要的。需要做的只是将这些系数按照一定的顺序保存下来，而这种保存的方式就是\textbf{matrix}。
 
 \defb 
 	\textbf{Definition 1.8}
-	我们称一个 $ m \times n $ 的形如
+	定义一个 $ m \times n $ 的形如
 	$\left[ \begin{matrix}
 		a_{11} & a_{12} & \dots & a_{1n} \\
 		a_{21} & a_{22} & \dots & a_{2n} \\
 		\vdots & \vdots & \ddots & \vdots \\
 		a_{m1} & a_{m2} & \dots & a_{mn}		
 	\end{matrix}\right]$
-	的二维自然数阵列（$\forall i \in [1,m] \, j \in [1,n] \b a_{ij} \in \R $）称为一个\textbf{matrix}。我们一般使用大写字母的粗体字母\textbf{A,B,C}\dots 来表示矩阵。\\
+	的二维自然数阵列（$\forall i \in [1,m] \, j \in [1,n] \b a_{ij} \in \R $）称为一个\textbf{matrix}。一般使用大写字母的粗体字母\textbf{A,B,C}\dots 来表示矩阵。\\
 	
-	我们将矩阵的第$i$行第$j$列的元素称为矩阵的第$i$行第$j$列的\textbf{entry}。我们将矩阵的第$i$行的所有entry组成的list称为矩阵的第$i$行的\textbf{row}。我们将矩阵的第$j$行的所有entry组成的list称为矩阵的第$j$列的\textbf{column}。\\
+	将矩阵的第$i$行第$j$列的元素称为矩阵的第$i$行第$j$列的\textbf{entry}。将矩阵的第$i$行的所有entry组成的list称为矩阵的第$i$行的\textbf{row}。将矩阵的第$j$行的所有entry组成的list称为矩阵的第$j$列的\textbf{column}。\\
 
-	特别的，我们将这种反应线性方程系数关系的matrix称为\textbf{coefficient matrix}。
+	特别的，将这种反应线性方程系数关系的matrix称为\textbf{coefficient matrix}。
 \defe
 
 \egb
 例如：
 
-对于我们刚刚提到的例子，
+对于刚刚提到的例子，
 $\left[ \begin{matrix}
 	6 & 0 & 0 \\
 	0 & 12 & 0 \\
@@ -261,7 +264,7 @@ $\left[ \begin{matrix}
 就是这个线性方程组的coefficient matrix。
 \ege
 
-那么再进一步，我们有没有可能定义出一种运算，来直接反应$x_1,x_2,x_3$是如何做用到这个coefficient matrix上的呢？答案是肯定的。由于我们需要将$x_1,x_2,x_3$的这种有序关系保留下来，我们会自然的想到将$x_1,x_2,x_3$表示为一个vector，即
+进一步，有没有可能定义出一种运算，来直接反应$x_1,x_2,x_3$是如何做用到这个coefficient matrix上的呢？答案是肯定的。由于需要将$x_1,x_2,x_3$的这种有序关系保留下来，会自然的想到将$x_1,x_2,x_3$表示为一个vector，即
 $\mathbf{x} = 
 \left[ \begin{matrix}
 	x_1 \\
@@ -288,11 +291,11 @@ $
 	0x_1 + 0x_2 + 1x_3
 \end{matrix}\right]
 $。
-我们将这种运算称为\textbf{matrix-vector multiplication}。
+将这种运算称为\textbf{matrix-vector multiplication}。
 
 \defb 
 	\textbf{Definition 1.9}
-	我们定义 $ m \times n $ 的matrix \textbf{A}和一个 length 为$ n $ vector \textbf{x}的\textbf{matrix-vector multiplication}，$ \mathbf{Ax} $， 为
+	定义 $ m \times n $ 的matrix \textbf{A}和一个 length 为$ n $ vector \textbf{x}的\textbf{matrix-vector multiplication}，$ \mathbf{Ax} $， 为
 	$$ \mathbf{Ax} =
 	 \left[ \begin{matrix}
 		a_{11} & a_{12} & \dots & a_{1n} \\
@@ -317,15 +320,15 @@ $。
 	$$
 	\\
 
-	我们不难发现，其中$ \mathbf{b} $是一个length为$ m $的vector，它的第i个元素$ b_{i} $为A的第$i$行和x的第$j$列的“点乘”（对于这一高中知识我们将会在后面进行更加全面和数学化的介绍，其名称为 \textbf{inner product}。不同于高中$\v \cdot \u $的记法，我们一般会将这种运算写为$\< \v , \u \> $。在此后如果我们继续提及点乘，我们可能会将两种写法混用）。
+	不难发现，其中$ \mathbf{b} $是一个length为$ m $的vector，它的第i个元素$ b_{i} $为A的第$i$行和x的第$j$列的“点乘”（对于这一高中知识将会在后面进行更加全面和数学化的介绍，其名称为 \textbf{inner product}。不同于高中$\v \cdot \u $的记法，一般会将这种运算写为$\< \v , \u \> $。在此后如果继续提及点乘，可能会将两种写法混用）。
 
 \defe
 
-那么进一步的，我们是否可以同时计算多个用同一个coefficient matrix表示的线性方程组呢？答案是肯定的。我们只需要将多个vector按照一定的顺序排列在一起，形成一个matrix，然后将这个matrix和coefficient matrix进行matrix-vector multiplication即可。这样，我们就引入了一个新的概念——\textbf{matrix multiplication}。
+更进一步的，是否可以同时计算多个用同一个coefficient matrix表示的线性方程组呢？答案是肯定的。只需要将多个vector按照一定的顺序排列在一起，形成一个matrix，然后将这个matrix和coefficient matrix进行matrix-vector multiplication即可。这样，就引入了一个新的概念——\textbf{matrix multiplication}。
 
 \defb 
 	\textbf{Definition 1.10}
-	我们定义一个$ m \times n $ 的matrix \textbf{A}和一个$ n \times k $的matrix \textbf{B}的\textbf{matrix multiplication}，$ \mathbf{AB} $， 为
+	定义一个$ m \times n $ 的matrix \textbf{A}和一个$ n \times k $的matrix \textbf{B}的\textbf{matrix multiplication}，$ \mathbf{AB} $， 为
 	$$ \mathbf{AB} =
 	 \left[ \begin{matrix}
 		a_{11} & a_{12} & \dots & a_{1n} \\
@@ -350,8 +353,63 @@ $。
 	$$
 	\\
 
-	我们不难发现，其中$ \mathbf{C} $是一个$ m \times k $的matrix，它的第$i$行和第$j$列的entry为A的第$i$行和B的第$j$列的“点乘”。
+	不难发现，其中$ \mathbf{C} $是一个$ m \times k $的matrix，它的第$i$行和第$j$列的entry为A的第$i$行和B的第$j$列的inner product。
 
 \defe 
+
+\egb
+例如：
+
+\begin{itemize}
+
+	\item 
+	$\left[ \begin{matrix}
+		6 & 0 & 0 \\
+		0 & 12 & 0 \\
+		0 & 0 & 1
+	\end{matrix}\right]
+	\left[ \begin{matrix}
+		12  \\
+		1  \\
+		9 
+	\end{matrix}\right]
+	=
+	\left[ \begin{matrix}
+		6 \cdot 12 + 0 \cdot 1 + 0 \cdot 9 \\
+		0 \cdot 12 + 12 \cdot 1 + 0 \cdot 9 \\
+		0 \cdot 12 + 0 \cdot 1 + 1 \cdot 9
+	\end{matrix}\right]
+	=
+	\left[ \begin{matrix}
+		72 \\
+		12 \\
+		9
+	\end{matrix}\right]
+	$
+
+	\item
+	$\left[ \begin{matrix}
+		6 & 0 & 0 \\
+		0 & 12 & 0 \\
+		0 & 0 & 1
+	\end{matrix}\right]
+	\left[ \begin{matrix}
+		12 & 1 & 6 \\
+		1 & 0 & 2 \\
+		9 & 7 & 6
+	\end{matrix}\right]
+	=
+	\left[ \begin{matrix}
+		72 & 6 & 36 \\
+		12 & 0 & 24 \\
+		9 & 7 & 6
+	\end{matrix}\right]
+	$
+
+\end{itemize}
+
+\ege
+
+
 
 \end{document}
