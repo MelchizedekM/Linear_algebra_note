@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.9.14)  16 OCT 2023 22:28
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.9.14)  17 OCT 2023 00:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -668,14 +668,29 @@ Missing character: There is no ∶ (U+2236) in font [lmroman10-regular]:mapping=
 
 ]
 Missing character: There is no ∶ (U+2236) in font [lmroman10-regular]:mapping=tex-text;!
-[3] [4] (./linear_algebra.aux) ) 
+[3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 235--244
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 245--246
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--317
+
+ []
+
+[5] [6] (./linear_algebra.aux) ) 
 Here is how much of TeX's memory you used:
- 19781 strings out of 476179
- 451735 string characters out of 5809544
- 814111 words of memory out of 5000000
- 40199 multiletter control sequences out of 15000+600000
+ 19794 strings out of 476179
+ 452473 string characters out of 5809544
+ 814110 words of memory out of 5000000
+ 40212 multiletter control sequences out of 15000+600000
  477059 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 99i,6n,104p,671b,417s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,104p,671b,417s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on linear_algebra.pdf (5 pages).
+Output written on linear_algebra.pdf (7 pages).
