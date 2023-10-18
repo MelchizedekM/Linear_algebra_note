@@ -59,6 +59,8 @@
 \def\span{\text{span}}
 \def\<{\left\langle}
 \def\>{\right\rangle}
+\def\¥{$}
+\def\¥{$}
 
 
 
@@ -131,18 +133,20 @@
 	\textbf{Definition 1.5}
 定义一个集合 $ \mathcal{V} $ 是一个\textbf{vector space}当且仅当它满足以下所有性质:
 
-	1. Commutativity:  $\forall  \u,\v\in \mathcal{V} \,\, \u+\v=\v+\u$ 
-
-	2. Associativity: $ \forall  \u,\v,\w \in \mathcal{V} \,\, \u+(v+w)=(\v+\u)+\w \,\,\, \text{and} \,\,\, \forall  a,b\in \mathbb{R} \,\, a(b\v)=(ab)\v $ 
+	\begin{itemize}
 	
-	3. Additive identity: $ \exists \u \in \mathcal{V} \,\, \forall  \v\in \mathcal{V} \,\, \v+\u=\v \b \text{将} \u \text{记作} 0 $ 
+	\item[1.] Commutativity:  $\forall  \u,\v\in \mathcal{V} \,\, \u+\v=\v+\u$ 
 
-	4. Additive inverse: $ \forall  \v\in \mathcal{V} \,\, \exists  \u\in \mathcal{V} \,\, \v+\u=0 $ 
+	\item[2.] Associativity: $ \forall  \u,\v,\w \in \mathcal{V} \,\, \u+(v+w)=(\v+\u)+\w \,\,\, \text{and} \,\,\, \forall  a,b\in \mathbb{R} \,\, a(b\v)=(ab)\v $ 
 	
-	5. Multiplicative identity: $ \forall  \v\in \mathcal{V} \,\, 1\v=\v $ 
-	
-	6. Distributive properties: $ \forall  \u,\v\in \mathcal{V} \,\, \forall  a,b\in \mathbb{R} \,\,  a(\v+\u)=a\v+a\u \,\, (a+b)\v=a\v \,\,\,  \text{and} \,\,\,  +b\v $ 
+	\item[3.] Additive identity: $ \exists \u \in \mathcal{V} \,\, \forall  \v\in \mathcal{V} \,\, \v+\u=\v \b \text{将} \u \text{记作} 0 $ 
 
+	\item[4.] Additive inverse: $ \forall  \v\in \mathcal{V} \,\, \exists  \u\in \mathcal{V} \,\, \v+\u=0 $ 
+	
+	\item[5.] Multiplicative identity: $ \forall  \v\in \mathcal{V} \,\, 1\v=\v $ 
+	
+	\item[6.] Distributive properties: $ \forall  \u,\v\in \mathcal{V} \,\, \forall  a,b\in \mathbb{R} \,\,  a(\v+\u)=a\v+a\u \,\, (a+b)\v=a\v \,\,\,  \text{and} \,\,\,  +b\v $ 
+	\end{itemize}
 同时定义所有属于 $ \mathcal{V} $ 这个vector space的元素都是 \textbf{vector}。
 \defe
 
@@ -164,10 +168,10 @@ $\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ �
 如果定义 $ P(n) ∶=\{ \sum_{i=0}^n p_i t^i :\forall p_i\in \mathbb{R}\} $  那么可以发现P(n)也是一个vector space。
 \ege 
 
-自然的，会思考，像P(n)和$\mathbb{R}^n$的这些vector space之间会不会有一种内在联系呢？
+自然的，我们会思考，像P(n)和$\mathbb{R}^n$的这些vector space之间会不会有一种内在联系呢？
 显然会发现任意一个 $ \sum_{i=0}^n p_i t^i $ 的多项式都可以被 $ (p_1,p_2,…,p_n) $ 唯一确定的表示，将这种关系称为\textbf{isomorphism}。对于这一关系的定义完善先按下不表，继续对于Vector space本身的探讨。
 
-\section{Linear Combination and Span}
+\section{Linear Combination, Span and Subspace}
 
 在上一个小节，介绍了什么是vector space。而在这一章节中，将会从一个重要的概念——linear出发，探讨该如何构建一个vector space以及vector的一些重要定义。
 
@@ -212,7 +216,45 @@ $\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ �
 
 \ege 
 
-更进一步，观察例子中$\span$的线性组合。可以发现，这种线性组合可以被表示为一组多元一次方程组的形式。可以将任意的$\v \in \span((6,0,0),(0,12,0),(0,0,1))$表示为:
+在这个例子中，不难发现，$\span((6,0,0),(0,12,0))$的结果也是一个vector space。这个vector space是属于$\R^3$的个子集。而$\span(f_1,f_2)$的结果也是一个vector space。这个vector space是属于$P(3)$的一个子集。那么更一般化的，我们希望将这样的子空间定义化——称为\textbf{subspace}。
+
+\defb 
+	\textbf{Definition 1.8}
+	定义一个集合$\U$是$\V$的一个\textbf{subspace}当且仅当它满足以下所有性质:
+	\begin{itemize}
+		\item[1.] $\U$是一个vector space
+		\item[2.] $\U \subseteq \V$
+	\end{itemize}
+
+\defe 
+
+在获得了subspace的定义后，可以发现任意一个vector space都拥有大于等于一个的subspace。基于集合的性质，我们自认会考虑不同subspace之间加和。在这里我们引入两种加和方式——\textbf{sum}和\textbf{direct sum}。
+
+\defb 
+	\textbf{Definition 1.9}
+	定义两个subspace $\U$和$\V$的\textbf{sum}（记做$+$）为:
+	$$ \U + \V := \{ \u + \v : \forall \u \in \U \b \forall \v \in \V \} $$
+\defe
+
+\defb 
+	\textbf{Definition 1.10}
+	定义两个subspace $\U$和$\V$的sum是\textbf{direct sum}（记做$\oplus$）为:
+	$$ \U \oplus \V := \{ \u + \v : \forall \u \in \U \b \forall \v \in \V \b \u + \v \text{是唯一的} \} $$
+\defe
+
+\egb
+例如：
+
+\begin{itemize}
+
+\item  $\span({6,0,0},(0,12,0))$和$\span((12,0,0),(0,19,0))$的sum，即$\span((6,0,0),(0,12,0))+\span((12,0,0),(0,19,0))$，是在$\R^3$中\¥ z = 0 \¥ 的平面。由于\¥ (18,31,0) \¥ 可以表示为\\$(18,31,0) + 0 \b (\text{where }(18,31,0)\in \span((6,0,0),(0,12,0))), \, 0 \in \span((12,0,0),(0,19,0))$\\或$(6,12,0)+(12,19,0) (\text{where } (6,12,0) \in \span((6,0,0),(0,12,0))), \, (12,19,0) \in \span((12,0,0),(0,19,0))$。\\ 这说明$\span({6,0,0},(0,12,0))$和$\span((12,0,0),(0,19,0))$的sum并不少direct sum。
+\item $\span({6,0,0},(0,12,0))$和$\span((0,0,1))$的sum，我们可以容易验证这二者的sum是一个direct sum。在此不加赘述，留待读者自证。
+
+\end{itemize}
+\ege
+\section{Matrix and Matrix computation}
+
+回顾在讲解$\span$的过程中距离使用的的线性组合。可以发现，这种线性组合可以被表示为一组多元一次方程组的形式。可以将任意的$\v \in \span((6,0,0),(0,12,0),(0,0,1))$表示为:
 
 $$\begin{cases}
 	6x_1 + 0x_2 + 0x_3 &= v_1 \\
@@ -237,7 +279,7 @@ $ \left[\begin{matrix}
 可以发现，$x_1,x_2,x_3$的出现是存在规律的，在每一行上第一个出现的都是$x_1$第二个都是$x_2$...以此类推。而且不难验证，这种关系对于任意的$n$都是普遍存在的。作为懒惰且不想多费墨水的，自然会想要寻找一种更加简单的方式来反应这样的组合。由于$x_i$的出现位置是一定的，因而只有每个$x_i$前面的系数是重要的。需要做的只是将这些系数按照一定的顺序保存下来，而这种保存的方式就是\textbf{matrix}。
 
 \defb 
-	\textbf{Definition 1.8}
+	\textbf{Definition 1.11}
 	定义一个 $ m \times n $ 的形如
 	$\left[ \begin{matrix}
 		a_{11} & a_{12} & \dots & a_{1n} \\
@@ -294,7 +336,7 @@ $。
 将这种运算称为\textbf{matrix-vector multiplication}。
 
 \defb 
-	\textbf{Definition 1.9}
+	\textbf{Definition 1.11}
 	定义 $ m \times n $ 的matrix \textbf{A}和一个 length 为$ n $ vector \textbf{x}的\textbf{matrix-vector multiplication}，$ \mathbf{Ax} $， 为
 	$$ \mathbf{Ax} =
 	 \left[ \begin{matrix}
@@ -327,7 +369,7 @@ $。
 更进一步的，是否可以同时计算多个用同一个coefficient matrix表示的线性方程组呢？答案是肯定的。只需要将多个vector按照一定的顺序排列在一起，形成一个matrix，然后将这个matrix和coefficient matrix进行matrix-vector multiplication即可。这样，就引入了一个新的概念——\textbf{matrix multiplication}。
 
 \defb 
-	\textbf{Definition 1.10}
+	\textbf{Definition 1.12}
 	定义一个$ m \times n $ 的matrix \textbf{A}和一个$ n \times k $的matrix \textbf{B}的\textbf{matrix multiplication}，$ \mathbf{AB} $， 为
 	$$ \mathbf{AB} =
 	 \left[ \begin{matrix}

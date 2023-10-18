@@ -1,4 +1,5 @@
 \babel@toc {nil}{}\relax 
 \contentsline {chapter}{\numberline {1}Vector, Vector space, and Linear}{2}{}%
 \contentsline {section}{\numberline {1.1}Vector and Vector space}{2}{}%
-\contentsline {section}{\numberline {1.2}Linear Combination and Span}{3}{}%
+\contentsline {section}{\numberline {1.2}Linear Combination, Span and Subspace}{4}{}%
+\contentsline {section}{\numberline {1.3}Matrix and Matrix computation}{5}{}%
