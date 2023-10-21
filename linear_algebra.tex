@@ -50,10 +50,6 @@
 \def\sums{ \sum_{x \in \s}}
 \def\baru{\bar{\mu}}
 \def\Mbaru{\mathfrak{M}_{\baru}}
-\def\defb{\begin{tcolorbox} [colback=orange!20, colframe=orange!60, sharp corners, leftrule={3pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
-\def\defe{\end{tcolorbox}}
-\def\egb{\begin{tcolorbox} [colback=cyan!20, colframe=cyan!40, sharp corners, leftrule={5pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
-\def\ege{\end{tcolorbox}}
 \def\V{\mathcal{V}}
 \def\U{\mathcal{U}}
 \def\v{\mathbf{v}}
@@ -65,8 +61,19 @@
 \def\¥{$}
 \def\¥{$}
 
+
 \newtheorem{definition}{Definition}[chapter]
 \newcommand{\deftitle}[1]{\begin{definition}  #1 \end{definition}}
+\newtheorem{property}{Property}[chapter]
+\newcommand{\proptitle}[1]{\begin{property}  #1 \end{property}}
+
+\def\defb{\begin{tcolorbox} [colback=orange!20, colframe=orange!60, sharp corners, leftrule={3pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
+\def\defe{\end{tcolorbox}}
+\def\propb{\begin{tcolorbox} [colback=yellow!30, colframe=yellow!80, sharp corners, leftrule={3pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
+\def\prope{\end{tcolorbox}}
+\def\egb{\begin{tcolorbox} [colback=cyan!20, colframe=cyan!40, sharp corners, leftrule={5pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
+\def\ege{\end{tcolorbox}}
+
 
 
 
@@ -209,6 +216,8 @@ $\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ �
 		\item[1.] $ \forall \u,\v \in \a \b f(\u+\v)=f(\u)+f(\v) \in \bs$
 		\item[2.] $ \forall \v \in \a \b \forall a \in \R \b f(a\v)=af(\v) \in \bs$
 	\end{itemize}
+
+	另外，我们把所有从$\a$到$\bs$的linear function或map的集合记做$\lm(\a,\bs)$。
 \defe
 
 \egb
@@ -478,7 +487,36 @@ $。
 
 \ege
 
+观察matrix multiplication的定义，可以发现，matrix multiplication的运算顺序是不能交换的。也就是说，$ \mathbf{AB} \neq \mathbf{BA} $。这是因为matrix multiplication的定义中，matrix \textbf{A}的行数和matrix \textbf{B}的列数是有关系的。
 
+并且matrix multiplication可以被视作是一种\textbf{composition}。也就是说，$ \mathbf{AB} $是将\textbf{A}作用在\textbf{B}（在这里\textbf{B}可以是一个只有一列的matrix，即vector）上的结果。在这种基础上，我们不难验证，其实所有的matrix multiplication都可以被视作从一个vector space到另一个vector space的linear function。即$\mathbf{A}(*) : \R^{n+k} \ra \R^{m+k}$，在这里\textbf{A}是一个m行n列的矩阵，*是一个n行k列的vector。
+
+\propb
+	\proptitle{}
+	对于任意一个$ n \times m $ 的matrix \textbf{A}，其都可以唯一确定的表示一个linear function $\mathbf{A}(*) : \R^{n+k} \ra \R^{m+k}$。
+	其中k是方程$\mathbf{A}(*)$作用到的matrix的列数。
+\prope
+
+\egb
+例如：
+
+我们上面提到的function $ f \, : \R^2 \ra \R^2 $ 定义为 $ f((x,y)) = (x+y,x-y) $，可以被表示为一个coefficient matrix $ \left[ \begin{matrix}
+	1 & 1 \\
+	1 & -1
+\end{matrix}\right] $。那么我们可以发现，$ f((x,y)) = \left[ \begin{matrix}
+	1 & 1 \\
+	1 & -1
+\end{matrix}\right] \left[ \begin{matrix}
+	x \\
+	y
+\end{matrix}\right] $。这也就是说，$ f((x,y)) $可以被视作是将$ \left[ \begin{matrix}
+	1 & 1 \\
+	1 & -1
+\end{matrix}\right] $作用在$ \left[ \begin{matrix}
+	x \\
+	y
+\end{matrix}\right] $上的结果。
+\ege
 
 
 \end{document}
