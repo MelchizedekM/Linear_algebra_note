@@ -67,9 +67,9 @@
 \newtheorem{property}{Property}[chapter]
 \newcommand{\proptitle}[1]{\begin{property}  #1 \end{property}}
 
-\def\defb{\begin{tcolorbox} [colback=orange!20, colframe=orange!60, sharp corners, leftrule={3pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
+\newcommand{\defb}[1]{\begin{tcolorbox} [colback=orange!20, colframe=orange!60, sharp corners, leftrule={3pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}] \deftitle{#1}} 
 \def\defe{\end{tcolorbox}}
-\def\propb{\begin{tcolorbox} [colback=yellow!30, colframe=yellow!80, sharp corners, leftrule={3pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
+\newcommand{\propb}[1]{\begin{tcolorbox} [colback=red!10, colframe=red!60, sharp corners, leftrule={3pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]\proptitle{#1}}
 \def\prope{\end{tcolorbox}}
 \def\egb{\begin{tcolorbox} [colback=cyan!20, colframe=cyan!40, sharp corners, leftrule={5pt}, rightrule={0pt}, toprule={0pt}, bottomrule={0pt}, left={2pt}, right={2pt}, top={3pt}, bottom={3pt}]}
 \def\ege{\end{tcolorbox}}
@@ -103,8 +103,7 @@
 在高中的学习过程中,已经接触到了一种特殊的量——向量（或矢量）。在过去的学习中认为这种量不只有数值大小,还有方向。一般会将他们写成(a,b,c)的形式。例如(6,1,2)就代表着一个在x方向延伸六个单位长度,在y方向延伸一个单位长度,在z方向延伸了两个单位长度的向量。但是这种表述方式并不够规范,也不好表示一组有着某些抽象关系的向量,例如所有从原点发出的向量。毕竟像 $ \{(x,y,z):x\in  \mathbb{R},y\in \mathbb{R},z \in \mathbb{R} \} $ 的表达并不算简单,在引入更多坐标轴变量的时候也会更费墨水,因此想要引入一些特殊的符号来更加方便的表述这样的list（有序列）。
 
 首先严谨的定义一下什么是list和list的length。
-\defb
-	\deftitle{list}
+\defb{list}
 	定义n个数构成了一个length为n的list当且仅当这n个数以一种有序的方式排列在一起组合成一个元素。
 	一般将这种有序列写作 $ (x_1,x_2,x_3,…,x_n) $ 。
 \defe
@@ -113,8 +112,7 @@
 在此基础上,便可以定义在任意n下所有长度为n的list的集合了
 定义 $ \mathbb{R}^n $ 为所有长度为n的list的集合,即
 
-\defb 
-	\deftitle{$\R^n$}
+\defb{$\R^n$} 
  $$ \mathbb{R}^n := \{(x_1,x_2,x_3,…,x_n):\forall i\in \mathbb{Z} \,\, x_i\in  \mathbb{R} \} $$ 
 称其中的 $ x_i $ 为the i-th coordinate。
 \defe
@@ -124,20 +122,18 @@
  $$ \mathbb{R}^4 := \{(x_1,x_2,x_3,x_4):\forall i\in \mathbb{Z} \,\, x_i\in  \mathbb{R} \} $$ 
 \ege
 
-现在非常神奇地发现,之前所学过的所谓vector都是属于 $\mathbb{R}^2$ 或 $\mathbb{R}^3$ 的list。回忆曾经学过的向量的加法,比如(6,1,2)+(12,1,9)=(6+12,1+1,9+9)加法的方式就是简单的将不同coordinate上的元素分别相加。
+现在非常神奇地发现,之前所学过的所谓vector都是属于 $\mathbb{R}^2$ 或 $\mathbb{R}^3$ 的list。回忆曾经学过的向量的加法,比如(6,1,2)+(12,1,8)=(6+12,1+1,2+8)加法的方式就是简单的将不同coordinate上的元素分别相加。
 
 那么类比的,就可以定义任意n下 $\mathbb{R}^n$ 中元素的加法:
 
-\defb
-	\deftitle{加法}
+\defb{加法}
 	在 $\mathbb{R}^n$ 中符号“+”可以由以下公式定义，将这种运算称为\textbf{加法}:	
  $$ \forall x,y\in \mathbb{R}^n,x+y∶=z \,\,\, \text{where} \,\,\, z_i=x_i+y_i  \forall i $$ 
 \defe
 
 可以显然的发现,这里的加法是符合交换律的,在这里就不做证明,留待读者自证。而根据对零的一般感知,也就是所有数加0都是它本身,可以定义在 $\mathbb{R}^n$ 中的0:
 
-\defb
-	\deftitle{0}
+\defb{0}
 	定义 $\mathbb{R}^n$ 中的\textbf{0}为:
  $$ \forall x\in \mathbb{R}^n \,\,\,  x+0=x $$ 
 \defe
@@ -145,8 +141,7 @@
 
 当然,数学家不愿意止步于此。希望将熟悉的欧几里得空间也就是 $\mathbb{R}^n$ 中的朴素认知拓展推广到更加抽象的一般集合中。再根据对vector也就是向量的朴素认知将其推广到一般集合中的一般元素。便有了更加抽象和一般化的对vector space和vector的定义:
 
-\defb
-	\deftitle{vector space}
+\defb{vector space}
 定义一个集合 $ \mathcal{V} $ 是一个\textbf{vector space}当且仅当它满足以下所有性质:
 
 	\begin{itemize}
@@ -193,8 +188,7 @@ $\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ �
 
 当提及linear也就线性的时候，第一时间想到的一定会是线性函数（linear function），也就是从初中开始接触到的一次函数。根据对线性函数的直观印象，可以简单地认为，线性本质上就是对不同的元素进行加法和数乘的运算。而在上一章节中已经定义了vector space，也就是说，可以将线性函数初中学习的最基础的多元一次函数拓展到vector space上，看作是对vector space中的元素进行加法和数乘的运算。而将这种对vector space中的多个元素进行加法和数乘的运算称为\textbf{linear combination}。
 
-\defb
-	\deftitle{linear combination}
+\defb{linear combination}
 	$\forall \v_1,\v_2,…,\v_k \in \V \b \forall a_1,a_2,…,a_k \in \R $ 称形如$ \sum_{i=1}^{k} a_k \v_k $的表达式为$\v_1, \v_2 , \dots , \v_k$的一个\textbf{linear combination}。
 	
 	如果$ \u \in \V$ 是由通过关系式 $\u = a_1\v_1+a_2\v_2+…+a_n\v_n $ 获得的，那么说$\u$可以被$ \v_1,\v_2,…,\v_n $ 的\textbf{linear combination}表示。
@@ -209,14 +203,15 @@ $\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ �
 
 这样的，我们对数学中linearity（线性）这一概念感知也就不言自明：\textbf{当某一种元素（可以是vector，number也可以是function或map）在其作用方式下对加法具有交换和结合率、并且不在意数乘的先后顺序，我们便可以认为元素是线性的}。这种感知在vector中就表现为vector space中的Commutativity、Associativity和Distributive properties。那么更进一步，对于一个function或map，该如何定义线性呢？在这里，做如下符合这一线性感知的定义：
 
-\defb
-\deftitle{linear}
+\defb{linear}
 	定义一个function或map $ f \, : \a \ra \bs $是\textbf{linear}的当且仅当它满足以下所有性质:
 	\begin{itemize}
 		\item[1.] $ \forall \u,\v \in \a \b f(\u+\v)=f(\u)+f(\v) \in \bs$
 		\item[2.] $ \forall \v \in \a \b \forall a \in \R \b f(a\v)=af(\v) \in \bs$
 	\end{itemize}
 
+	在这里，我们称$\a$为domain，$\bs$为range或codomain。
+	
 	另外，我们把所有从$\a$到$\bs$的linear function或map的集合记做$\lm(\a,\bs)$。
 \defe
 
@@ -228,8 +223,7 @@ $\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ �
 
 如果将vector space的定义视作构建大楼的图纸，将vector是为构建大楼的砖块。那么linear combination就可以被视为搭建蓝图中大厦所必要的工具（这里必须指出，虽然在定义什么是vector的时候使用了vector space。但是事实上这并不是必须的，甚至在许多情况下，是通过对一组感兴趣的元素的线性叠加来构建出所希望研究的vector space的。值得指出的是，这种循环看起来会产生形式上的问题。但在形式上依旧可以说“通过某一组‘元素’构建起了一个集合，而这个集合经过验证‘居然神奇的’是一个vector space。而最初用来构建这一vector space的元素‘居然’也是这个vector space中的元素”这样的过程来避免形式上的问题。在之后不会再注意使用这种冗长的避免方式，而是直接将构建的元素称为vector）。因此，引入一个重要的定义——\textbf{span}，来严格表示使用一组vector来生成一个vector space的过程。
 
-\defb
-\deftitle{span}
+\defb{span}
 	定义一个集合$\U$是由一组vector $\v_1,\v_2,\dots,\v_n \in \V$ \textbf{“span”}的当且仅当集合$\U$中的所有元素恰好是$\v_1,\v_2,\dots,\v_n$的全部linear combination。将这样的$\U$记做$\span(\v_1,\v_2,\dots,\v_n)$。
 
 	用一种更加数学的表示方法，可以将$\span(\v_1,\v_2,\dots,\v_n)$表示为：
@@ -253,8 +247,7 @@ $\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ �
 
 在这个例子中，不难发现，$\span((6,0,0),(0,12,0))$的结果也是一个vector space。这个vector space是属于$\R^3$的个子集。而$\span(f_1,f_2)$的结果也是一个vector space。这个vector space是属于$P(3)$的一个子集。那么更一般化的，我们希望将这样的子空间定义化——称为\textbf{subspace}。
 
-\defb 
-\deftitle{subspace}
+\defb{subspace} 
 	定义一个集合$\U$是$\V$的一个\textbf{subspace}当且仅当它满足以下所有性质:
 	\begin{itemize}
 		\item[1.] $\U$是一个vector space
@@ -265,14 +258,12 @@ $\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ �
 
 在获得了subspace的定义后，可以发现任意一个vector space都拥有大于等于一个的subspace。基于集合的性质，我们自认会考虑不同subspace之间加和。在这里我们引入两种加和方式——\textbf{sum}和\textbf{direct sum}。
 
-\defb 
-\deftitle{sum}
+\defb{sum} 
 	定义两个subspace $\U$和$\V$的\textbf{sum}（记做$+$）为:
 	$$ \U + \V := \{ \u + \v : \forall \u \in \U \b \forall \v \in \V \} $$
 \defe
 
-\defb 
-\deftitle{direct sum}
+\defb{direct sum} 
 	定义两个subspace $\U$和$\V$的sum是\textbf{direct sum}（记做$\oplus$）为:
 	$$ \U \oplus \V := \{ \u + \v : \forall \u \in \U \b \forall \v \in \V \b \u + \v \text{是唯一的} \} $$
 \defe
@@ -282,7 +273,7 @@ $\R^n$之中，$\forall a \in \R \b \forall \v = (v_1,v_2,\dots,v_n) \in \R^n$ �
 
 \begin{itemize}
 
-\item  $\span({6,0,0},(0,12,0))$和$\span((12,0,0),(0,19,0))$的sum，即$\span((6,0,0),(0,12,0))+\span((12,0,0),(0,19,0))$，是在$\R^3$中\¥ z = 0 \¥ 的平面。由于\¥ (18,31,0) \¥ 可以表示为\\$(18,31,0) + 0 \b (\text{where }(18,31,0)\in \span((6,0,0),(0,12,0))), \, 0 \in \span((12,0,0),(0,19,0))$\\或$(6,12,0)+(12,19,0) (\text{where } (6,12,0) \in \span((6,0,0),(0,12,0))), \, (12,19,0) \in \span((12,0,0),(0,19,0))$。\\ 这说明$\span({6,0,0},(0,12,0))$和$\span((12,0,0),(0,19,0))$的sum并不少direct sum。
+\item  $\span({6,0,0},(0,12,0))$和$\span((12,0,0),(0,18,0))$的sum，即$\span((6,0,0),(0,12,0))+\span((12,0,0),(0,18,0))$，是在$\R^3$中\¥ z = 0 \¥ 的平面。由于\¥ (18,31,0) \¥ 可以表示为\\$(18,31,0) + 0 \b (\text{where }(18,31,0)\in \span((6,0,0),(0,12,0))), \, 0 \in \span((12,0,0),(0,18,0))$\\或$(6,12,0)+(12,18,0) (\text{where } (6,12,0) \in \span((6,0,0),(0,12,0))), \, (12,18,0) \in \span((12,0,0),(0,18,0))$。\\ 这说明$\span({6,0,0},(0,12,0))$和$\span((12,0,0),(0,18,0))$的sum并不少direct sum。
 \item $\span({6,0,0},(0,12,0))$和$\span((0,0,1))$的sum，我们可以容易验证这二者的sum是一个direct sum。在此不加赘述，留待读者自证。
 
 \end{itemize}
@@ -313,8 +304,7 @@ $ \left[\begin{matrix}
 
 可以发现，$x_1,x_2,x_3$的出现是存在规律的，在每一行上第一个出现的都是$x_1$第二个都是$x_2$...以此类推。而且不难验证，这种关系对于任意的$n$都是普遍存在的。作为懒惰且不想多费墨水的，自然会想要寻找一种更加简单的方式来反应这样的组合。由于$x_i$的出现位置是一定的，因而只有每个$x_i$前面的系数是重要的。需要做的只是将这些系数按照一定的顺序保存下来，而这种保存的方式就是\textbf{matrix}。
 
-\defb 
-\deftitle{matrix}
+\defb{matrix} 
 	定义一个 $ m \times n $ 的形如
 	$\left[ \begin{matrix}
 		a_{11} & a_{12} & \dots & a_{1n} \\
@@ -340,6 +330,56 @@ $\left[ \begin{matrix}
 \end{matrix}\right]$
 就是这个线性方程组的coefficient matrix。
 \ege
+
+在这里，我们不难发现vector本质上就是一个1column的matrix后，\textbf{matrix sum}和\textbf{scalar multiplication in matrix}便可以根据我们对vector sum和vector scalar multiplication的认识自然产生了：
+
+\defb{matrix sum}
+定义\textbf{C}是\textbf{A}和\textbf{B}的\textbf{matrix sum}当且仅当\textbf{A}和\textbf{B}的行数和列数分别相等并且$\forall i,j \in \R \b c_{ij}=a_{ij}+b_{ij}$。
+
+记做\textbf{C}=\textbf{A}+\textbf{B}。
+\defe
+
+\defb{scalar multiplication in matrix}
+定义\textbf{B}是\textbf{A}的\textbf{scalar multiplication in matrix}当且仅当$\forall i,j \in \R \b \text{for some } \alpha \b b_{ij}= \alpha a_{ij}$。
+
+记做\textbf{B}=$\alpha$\textbf{A}。
+\defe
+
+\egb
+例如：
+
+$\left[ \begin{matrix}
+	6 & 0 & 0 \\
+	0 & 12 & 0 \\
+	0 & 0 & 1
+\end{matrix}\right]$
++
+$\left[ \begin{matrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1
+\end{matrix}\right]$
+=
+$\left[ \begin{matrix}
+	7 & 0 & 0 \\
+	0 & 13 & 0 \\
+	0 & 0 & 2
+\end{matrix}\right]$
+
+$2\left[ \begin{matrix}
+	6 & 0 & 0 \\
+	0 & 12 & 0 \\
+	0 & 0 & 1
+\end{matrix}\right]$
+=
+$\left[ \begin{matrix}
+	12 & 0 & 0 \\
+	0 & 24 & 0 \\
+	0 & 0 & 2
+\end{matrix}\right]$
+\ege
+
+不难发现，对于所有的$n$和$m$
 
 进一步，有没有可能定义出一种运算，来直接反应$x_1,x_2,x_3$是如何做用到这个coefficient matrix上的呢？答案是肯定的。由于需要将$x_1,x_2,x_3$的这种有序关系保留下来，会自然的想到将$x_1,x_2,x_3$表示为一个vector，即
 $\mathbf{x} = 
@@ -370,8 +410,7 @@ $
 $。
 将这种运算称为\textbf{matrix-vector multiplication}。
 
-\defb 
-\deftitle{matrix-vector multiplication}
+\defb{matrix-vector multiplication} 
 	定义 $ m \times n $ 的matrix \textbf{A}和一个 length 为$ n $ vector \textbf{x}的\textbf{matrix-vector multiplication}，$ \mathbf{Ax} $， 为
 	$$ \mathbf{Ax} =
 	 \left[ \begin{matrix}
@@ -403,8 +442,7 @@ $。
 
 更进一步的，是否可以同时计算多个用同一个coefficient matrix表示的线性方程组呢？答案是肯定的。只需要将多个vector按照一定的顺序排列在一起，形成一个matrix，然后将这个matrix和coefficient matrix进行matrix-vector multiplication即可。这样，就引入了一个新的概念——\textbf{matrix multiplication}。
 
-\defb 
-\deftitle{matrix multiplication}
+\defb{matrix multiplication} 
 	定义一个$ m \times n $ 的matrix \textbf{A}和一个$ n \times k $的matrix \textbf{B}的\textbf{matrix multiplication}，$ \mathbf{AB} $， 为
 	$$ \mathbf{AB} =
 	 \left[ \begin{matrix}
@@ -448,19 +486,19 @@ $。
 	\left[ \begin{matrix}
 		12  \\
 		1  \\
-		9 
+		8 
 	\end{matrix}\right]
 	=
 	\left[ \begin{matrix}
-		6 \cdot 12 + 0 \cdot 1 + 0 \cdot 9 \\
-		0 \cdot 12 + 12 \cdot 1 + 0 \cdot 9 \\
-		0 \cdot 12 + 0 \cdot 1 + 1 \cdot 9
+		6 \cdot 12 + 0 \cdot 1 + 0 \cdot 8 \\
+		0 \cdot 12 + 12 \cdot 1 + 0 \cdot 8 \\
+		0 \cdot 12 + 0 \cdot 1 + 1 \cdot 8
 	\end{matrix}\right]
 	=
 	\left[ \begin{matrix}
 		72 \\
 		12 \\
-		9
+		8
 	\end{matrix}\right]
 	$
 
@@ -473,13 +511,13 @@ $。
 	\left[ \begin{matrix}
 		12 & 1 & 6 \\
 		1 & 0 & 2 \\
-		9 & 7 & 6
+		8 & 7 & 6
 	\end{matrix}\right]
 	=
 	\left[ \begin{matrix}
 		72 & 6 & 36 \\
 		12 & 0 & 24 \\
-		9 & 7 & 6
+		8 & 7 & 6
 	\end{matrix}\right]
 	$
 
@@ -491,8 +529,7 @@ $。
 
 并且matrix multiplication可以被视作是一种\textbf{composition}。也就是说，$ \mathbf{AB} $是将\textbf{A}作用在\textbf{B}（在这里\textbf{B}可以是一个只有一列的matrix，即vector）上的结果。在这种基础上，我们不难验证，其实所有的matrix multiplication都可以被视作从一个vector space到另一个vector space的linear function。即$\mathbf{A}(*) : \R^{n+k} \ra \R^{m+k}$，在这里\textbf{A}是一个m行n列的矩阵，*是一个n行k列的vector。
 
-\propb
-	\proptitle{}
+\propb{}
 	对于任意一个$ n \times m $ 的matrix \textbf{A}，其都可以唯一确定的表示一个linear function $\mathbf{A}(*) : \R^{n+k} \ra \R^{m+k}$。
 	其中k是方程$\mathbf{A}(*)$作用到的matrix的列数。
 \prope
@@ -517,6 +554,9 @@ $。
 	y
 \end{matrix}\right] $上的结果。
 \ege
+
+\section{Linear Independence, bases and dimension}
+
 
 
 \end{document}
