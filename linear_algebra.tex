@@ -557,6 +557,27 @@ $。
 
 \section{Linear Independence, bases and dimension}
 
+在上一章节中，我们已经知道了如何将一个vector space表示为一组vector的span。同样的，我们也知道对于同样一个vector space，可以有多种不同的span（例如$\R^2$可以被表示为$\span((1,0),(0,1))$，也可以被表示为$\span((1,1),(-1,1),(1,0))$）。那么，这些能生成同一个vector space的span vector之间有什么联系呢？不难看出，对于$(1,1),(-1,1),(1,0)$这一组vector中任意一个都可以被其他两个的linear combination表示。这样的vector组合称为\textbf{linearly dependent}。而对于$(1,0),(0,1)$这一组vector中任意一个都不可以被其他一个的linear combination表示。这样的vector组合称为\textbf{linearly independent}。
 
+\defb{linearly dependent}
+	定义一组vector $\v_1,\v_2,\dots,\v_n \in \V$是\textbf{linearly dependent}当且仅当至少存在一组不全为0的$a_1,a_2,\dots,a_n \in \R$使得$\sum_{i=1}^{n} a_i \v_i = 0$。
+
+	或者说，$\v_1,\v_2,\dots,\v_n \in \V$是\textbf{linearly dependent}当且仅当至少存在一个$i \in [1,n]$使得$\v_i \in \span(\v_1,\v_2,\dots,\v_{i-1},\v_{i+1},\dots,\v_n)$。
+\defe
+
+\defb{linearly independent}
+	定义一组vector $\v_1,\v_2,\dots,\v_n \in \V$是\textbf{linearly independent}当且仅当$\v_1,\v_2,\dots,\v_n \in \V$不是\textbf{linearly dependent}。
+
+	或者说，$\v_1,\v_2,\dots,\v_n \in \V$是\textbf{linearly independent}当且仅当$\v_1,\v_2,\dots,\v_n \in \V$不是\textbf{linearly dependent}。
+\defe
+
+在这个基础之上，我们可以定义出一组vector的\textbf{span}的\textbf{basis}。
+
+\defb{basis}
+	定义一组vector $\v_1,\v_2,\dots,\v_n \in \V$是\textbf{basis}当且仅当$\v_1,\v_2,\dots,\v_n \in \V$是linearly independent并且$\span(\v_1,\v_2,\dots,\v_n) = \V$。
+
+	或者说，$\v_1,\v_2,\dots,\v_n \in \V$是\textbf{basis}当且仅当$\v_1,\v_2,\dots,\v_n \in \V$是能够span $\V$的最小的span set。
+
+\defe
 
 \end{document}
