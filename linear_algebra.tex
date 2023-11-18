@@ -571,13 +571,43 @@ $。
 	或者说，$\v_1,\v_2,\dots,\v_n \in \V$是\textbf{linearly independent}当且仅当$\v_1,\v_2,\dots,\v_n \in \V$不是\textbf{linearly dependent}。
 \defe
 
-在这个基础之上，我们可以定义出一组vector的\textbf{span}的\textbf{basis}。
+在这个基础之上，我们可以定义出一组\textbf{span vector}是一个vecror spece $ \V$ 的\textbf{basis}。
 
 \defb{basis}
 	定义一组vector $\v_1,\v_2,\dots,\v_n \in \V$是\textbf{basis}当且仅当$\v_1,\v_2,\dots,\v_n \in \V$是linearly independent并且$\span(\v_1,\v_2,\dots,\v_n) = \V$。
 
 	或者说，$\v_1,\v_2,\dots,\v_n \in \V$是\textbf{basis}当且仅当$\v_1,\v_2,\dots,\v_n \in \V$是能够span $\V$的最小的span set。
-
 \defe
+
+而基于\textbf{span}的定义，不难知道如果$\v_1,\v_2,\dots,\v_n \in \V$是$\V$的\textbf{basis}，那么对于任意的$\v \in \V$都可以被表示为$\v = \sum_{i=1}^{n} a_i \v_i$。再由于\textbf{bases}的性质，不难发现$a_1,a_2,\dots,a_n$是唯一的。
+
+\propb{Criterion for basis}
+
+$\v_1,\v_2,\dots,\v_n \in \V$是$\V$的\textbf{basis}当且仅当对于任意的$\v \in \V$都会有唯一的$\v = \sum_{i=1}^{n} a_i \v_i$表示。
+
+\prope
+
+\begin{proof}
+
+	1) $\Rightarrow$ :
+
+	可以被表示：
+
+	由于$\v_1,\v_2,\dots,\v_n \in \V$是$\V$的\textbf{span}，因而对于任意的$\v \in \V$都会有$\v = \sum_{i=1}^{n} a_i \v_i$表示。
+	
+	唯一性：
+
+	假设对于某一个$\v \in \V$可以被$\v = \sum_{i=1}^{n} a_i \v_i$和$\v = \sum_{i=1}^{n} b_i \v_i$。
+	
+	那么可以发现$\v - \v = \sum_{i=1}^{n} a_i \v_i - \sum_{i=1}^{n} b_i \v_i = \sum_{i=1}^{n} (a_i - b_i) \v_i = 0$。 并且至少存在一个$i$使得$a_i - b_i \neq 0$。
+
+	由于$\v_1,\v_2,\dots,\v_n$是linear independent，因而$a_i - b_i = 0$。这与假设矛盾。
+
+	2) $\Leftarrow$ :
+
+	由于任意的$\v \in \V$，都有可以被表示为$\v = \sum_{i=1}^{n} a_i \v_i$，因而$\v_1,\v_2,\dots,\v_n \in \V$是$\V$的\textbf{span}。
+
+	由于任意的$\v \in \V$，都有唯一的$\v = \sum_{i=1}^{n} a_i \v_i$，因而$\v_1,\v_2,\dots,\v_n \in \V$是$\V$的\textbf{linearly independent}。
+\end{proof}
 
 \end{document}
