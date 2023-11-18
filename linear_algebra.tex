@@ -607,7 +607,24 @@ $\v_1,\v_2,\dots,\v_n \in \V$是$\V$的\textbf{basis}当且仅当对于任意的
 
 	由于任意的$\v \in \V$，都有可以被表示为$\v = \sum_{i=1}^{n} a_i \v_i$，因而$\v_1,\v_2,\dots,\v_n \in \V$是$\V$的\textbf{span}。
 
-	由于任意的$\v \in \V$，都有唯一的$\v = \sum_{i=1}^{n} a_i \v_i$，因而$\v_1,\v_2,\dots,\v_n \in \V$是$\V$的\textbf{linearly independent}。
+	由于任意的$\v \in \V$，都有唯一的$\v = \sum_{i=1}^{n} a_i \v_i$。由于$\v_i = \sum_{j=1}^{n} a_j \v_j$这个方程至少有$a_i = 1$，其他的$a_j$都为0这一个解，因而这一定是唯一一个解。
+	
+	因而$\v_1,\v_2,\dots,\v_n \in \V$是\textbf{linear independent}。
 \end{proof}
+
+而且根据\textbf{basis}的定义，不难发现。
+
+\propb{Spanning list contains a basis}
+
+对于任意可以生成$\V$的span set，可以被缩减为一个$\V$的\textbf{basis}。
+
+\prope
+
+\begin{proof}
+	
+	假设$\v_1,\v_2,\dots,\v_n \in \V$是一个可以生成$\V$的span set。那么$\v_1,\v_2,\dots,\v_n \in \V$是\textbf{span}，加之$\v_1,\v_2,\dots,\v_n \in \V$是\textbf{linearly dependent}。因而至少存在一个$\v_i \in \V$可以被其他的$\v_j \in \V$表示。那么可以将$\v_i$从$\v_1,\v_2,\dots,\v_n$中去除，得到$\v_1,\v_2,\dots,\v_{i-1},\v_{i+1},\dots,\v_n$。这样的操作可以一直进行下去，直到$\v_1,\v_2,\dots,\v_n$是\textbf{linearly independent}。那么$\v_1,\v_2,\dots,\v_n$就是$\V$的\textbf{basis}。
+\end{proof}
+
+
 
 \end{document}
